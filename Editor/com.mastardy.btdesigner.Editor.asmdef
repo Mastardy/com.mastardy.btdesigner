@@ -1,0 +1,18 @@
+{
+    "name": "com.mastardy.btdesigner.Editor",
+    "rootNamespace": "Packages",
+    "references": [
+        "GUID:9f32c179cf0d46a3bed18695e38102f3"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

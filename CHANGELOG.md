@@ -2,6 +2,18 @@
 
 All changes to this package will be documented in here. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
+## [0.1.0] - 18/11/2022
+
+### Added
+
+- Implemented BehaviorTreeDesign for holding all the nodes and the Behavior Tree logic
+- Implemented Node as the base class for all the nodes
+- Implemented RootNode as the start node for the Behavior Tree
+- Implemented ActionNode as the base class for Nodes responsible for changing something in the Game World
+- Implemented CompositionNode as the base class for Nodes responsible for managing the flow of the Behavior Tree
+- Implemented UtilityNode as the base class for Nodes responsible for helping with the development of the Behavior Tree
+- Implemented a few examples for each type of Node: WaitLog, Sequencer and Repeater.
+
 ## [0.0.1] - 17/11/2022
 
 ### Added
