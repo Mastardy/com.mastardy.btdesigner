@@ -1,0 +1,19 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <Style src="project://database/Assets/Editor/BehaviorTreeDesignEditorWindow.uss?fileID=7433441132597879392&amp;guid=9e77c5b9f8e4f5047b8d46944a3c5da7&amp;type=3#BehaviorTreeDesignEditorWindow" />
+    <uie:Toolbar>
+        <uie:ToolbarButton text="Save Asset" display-tooltip-when-elided="true" style="-unity-text-align: middle-left;" />
+        <uie:ToolbarSpacer />
+        <uie:ToolbarButton text="Save As..." display-tooltip-when-elided="true" style="-unity-text-align: middle-left;" />
+        <uie:ToolbarSpacer />
+        <uie:ToolbarButton text="Show in Project" display-tooltip-when-elided="true" style="-unity-text-align: middle-left;" />
+    </uie:Toolbar>
+    <BTDesigner.SplitView fixed-pane-index="1" fixed-pane-initial-dimension="300">
+        <ui:VisualElement name="leftPanel">
+            <BTDesigner.BehaviorTreeView focusable="true" style="flex-grow: 1;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="rightPanel" style="min-width: 300px; min-height: 100%;">
+            <ui:Label tabindex="-1" text="Inspector" style="-unity-text-align: upper-center; -unity-font-style: bold; font-size: 13px; margin-bottom: 10px;" />
+            <BTDesigner.InspectorView style="padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px;"/>
+        </ui:VisualElement>
+    </BTDesigner.SplitView>
+</ui:UXML>

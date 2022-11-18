@@ -2,7 +2,6 @@
 
 namespace BTDesigner
 {
-    [CreateAssetMenu(fileName = "Wait And Log", menuName = "BTDesign/Action Nodes/WaitLog")]
     public class WaitLog : ActionNode
     {
         private float start;

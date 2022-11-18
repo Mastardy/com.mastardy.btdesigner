@@ -14,6 +14,8 @@ namespace BTDesigner
     {
         [HideInInspector] public NodeState state = NodeState.Running;
         [NonSerialized] public bool started;
+        [HideInInspector] public string guid;
+        [HideInInspector] public Vector2 position;
         
         public NodeState Update()
         {
@@ -34,6 +36,11 @@ namespace BTDesigner
             return state;
         }
 
+        public virtual Node Clone()
+        {
+            return Instantiate(this);
+        }
+        
         protected abstract void OnStart();
         protected abstract NodeState OnUpdate();
         protected abstract void OnEnd();

@@ -1,6 +1,6 @@
 {
     "name": "com.mastardy.btdesigner.Editor",
-    "rootNamespace": "Packages",
+    "rootNamespace": "BTDesigner",
     "references": [
         "GUID:9f32c179cf0d46a3bed18695e38102f3"
     ],

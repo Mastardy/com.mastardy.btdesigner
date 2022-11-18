@@ -1,10 +1,10 @@
 {
     "name": "com.mastardy.btdesigner",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "displayName": "Behavior Tree Designer",
     "description": "This package has a Behavior Tree Designer for helping with AI development.",
-    "unity": "2021.3",
-    "unityRelease": "13f1",
+    "unity": "2022.1",
+    "unityRelease": "23f1",
     "author": {
         "name": "Mastardy",
         "email": "andremgmonteiro01@gmail.com",

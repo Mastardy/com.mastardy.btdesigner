@@ -2,6 +2,20 @@
 
 All changes to this package will be documented in here. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
+## [1.0.0] - 18/11/2022
+
+### Added
+
+- Implemented a basic GUI for the Behavior Tree under BTDesigner/Behavior Tree Designer
+
+### Fixed
+
+- Fixed Editor Assembly Definition Root Namespace to BTDesigner instead of Mastardy
+
+### Changed
+
+- Renamed BTDesign to BTDesigner in the Components menu and in the Assets Menu
+
 ## [0.1.0] - 18/11/2022
 
 ### Added
