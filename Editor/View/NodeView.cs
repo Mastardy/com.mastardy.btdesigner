@@ -2,6 +2,7 @@ using System;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEditor;
 
 namespace BTDesigner
 {
@@ -86,8 +87,10 @@ namespace BTDesigner
         public override void SetPosition(Rect newPos)
         {
             base.SetPosition(newPos);
+            Undo.RecordObject(node, "Behavior Tree (Set Position)");
             node.position.x = newPos.xMin;
             node.position.y = newPos.yMin;
+            EditorUtility.SetDirty(node);
         }
 
         public override void OnSelected()

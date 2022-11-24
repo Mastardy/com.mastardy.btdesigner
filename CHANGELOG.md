@@ -2,6 +2,21 @@
 
 All changes to this package will be documented in here. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
+## [1.2.0] - 24/11/2022
+
+### Added
+
+- Implemented Undo and Redo in BTDesigner window
+
+### Changed
+
+- Spaced out versions in this Changelog document.
+
+### Removed
+
+- Removed toolbar from BTDesigner window since it doesn't have a purpose no more.
+
+
 ## [1.1.0] - 24/11/2022
 
 ### Added
@@ -27,6 +42,7 @@ All changes to this package will be documented in here. The format is based on [
 
 - Renamed BTDesign to BTDesigner in the Components menu and in the Assets Menu
 
+
 ## [0.1.0] - 18/11/2022
 
 ### Added
@@ -38,6 +54,7 @@ All changes to this package will be documented in here. The format is based on [
 - Implemented CompositionNode as the base class for Nodes responsible for managing the flow of the Behavior Tree
 - Implemented UtilityNode as the base class for Nodes responsible for helping with the development of the Behavior Tree
 - Implemented a few examples for each type of Node: WaitLog, Sequencer and Repeater.
+
 
 ## [0.0.1] - 17/11/2022
 

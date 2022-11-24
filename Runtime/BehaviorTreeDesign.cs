@@ -26,42 +26,77 @@ namespace BTDesigner
             
             node.name = type.Name;
             node.guid = GUID.Generate().ToString();
+            
+            Undo.RecordObject(this, "Behavior Tree (CreateNode)");
             nodes.Add(node);
             
             AssetDatabase.AddObjectToAsset(node, this);
+            Undo.RegisterCreatedObjectUndo(node, "Behavior Tree (CreateNode)");
             AssetDatabase.SaveAssets();
             return node;
         }
 
         public void DeleteNode(Node node)
         {
+            Undo.RecordObject(this, "Behavior Tree (DeleteNode)");
             nodes.Remove(node);
-            AssetDatabase.RemoveObjectFromAsset(node);
+            
+            Undo.DestroyObjectImmediate(node);
             AssetDatabase.SaveAssets();
         }
 
         public void AddChild(Node parent, Node child)
         {
             var composition = parent as CompositionNode;
-            if (composition) composition.children.Add(child);
+            if (composition)
+            {
+                Undo.RecordObject(composition, "Behavior Tree (AddChild)");
+                composition.children.Add(child);
+                EditorUtility.SetDirty(composition);
+            }
 
             var startNode = parent as RootNode;
-            if (startNode) startNode.child = child;
+            if (startNode)
+            {
+                Undo.RecordObject(startNode, "Behavior Tree (AddChild)");
+                startNode.child = child;
+                EditorUtility.SetDirty(startNode);
+            }
             
             var utilNode = parent as UtilityNode;
-            if (utilNode) utilNode.child = child;
+            if (utilNode)
+            {
+                Undo.RecordObject(utilNode, "Behavior Tree (AddChild)");
+                utilNode.child = child;
+                EditorUtility.SetDirty(utilNode);
+            }
         }
 
         public void RemoveChild(Node parent, Node child)
         {
             var composition = parent as CompositionNode;
-            if (composition) composition.children.Remove(child);
+            if (composition)
+            {
+                Undo.RecordObject(composition, "Behavior Tree (RemoveChild)");
+                composition.children.Remove(child);
+                EditorUtility.SetDirty(composition);
+            }
 
             var startNode = parent as RootNode;
-            if (startNode) startNode.child = null;
+            if (startNode)
+            {
+                Undo.RecordObject(startNode, "Behavior Tree (RemoveChild)");
+                startNode.child = null;
+                EditorUtility.SetDirty(startNode);
+            }
             
             var utilNode = parent as UtilityNode;
-            if (utilNode) utilNode.child = null;
+            if (utilNode)
+            {
+                Undo.RecordObject(utilNode, "Behavior Tree (RemoveChild)");
+                utilNode.child = null;
+                EditorUtility.SetDirty(utilNode);
+            }
         }
 
         public List<Node> GetChildren(Node parent)

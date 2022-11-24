@@ -1,4 +1,3 @@
-using UnityEditor.Experimental.GraphView;
 using UnityEngine.UIElements;
 using UnityEditor;
 
@@ -10,11 +9,6 @@ namespace BTDesigner
 
         private Editor editor;
         
-        public InspectorView()
-        {
-            
-        }
-
         public void UpdateSelection(NodeView nodeView)
         {
             Clear();
@@ -23,7 +17,10 @@ namespace BTDesigner
 
             editor = Editor.CreateEditor(nodeView.node);
             
-            IMGUIContainer container = new IMGUIContainer(() => { editor.OnInspectorGUI(); });
+            IMGUIContainer container = new IMGUIContainer(() =>
+            {
+                if(editor.target) editor.OnInspectorGUI();
+            });
             
             Add(container);
         }

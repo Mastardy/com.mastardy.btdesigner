@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace BTDesigner
@@ -26,6 +27,14 @@ namespace BTDesigner
         
             var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Packages/com.mastardy.btdesigner/Editor/Resources/Styles/BehaviorTreeDesignEditorWindow.uss");
             styleSheets.Add(styleSheet);
+
+            Undo.undoRedoPerformed += OnUndoRedo;
+        }
+        
+        private void OnUndoRedo()
+        {
+            PopulateView(tree);
+            AssetDatabase.SaveAssets();
         }
 
         private NodeView GetNodeView(Node node)
@@ -106,11 +115,14 @@ namespace BTDesigner
         public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
         {
             //base.BuildContextualMenu(evt);
+
+            var localMousePosition = viewTransform.matrix.inverse.MultiplyPoint(evt.localMousePosition);
+            
             {
                 var types = TypeCache.GetTypesDerivedFrom<ActionNode>();
                 foreach (var type in types)
                 {
-                    evt.menu.AppendAction($"[{type.BaseType?.Name}] {type.Name}", (_) => CreateNode(type));
+                    evt.menu.AppendAction($"[{type.BaseType?.Name}] {type.Name}", (_) => CreateNode(type, localMousePosition));
                 }
             }
             
@@ -118,7 +130,7 @@ namespace BTDesigner
                 var types = TypeCache.GetTypesDerivedFrom<CompositionNode>();
                 foreach (var type in types)
                 {
-                    evt.menu.AppendAction($"[{type.BaseType?.Name}] {type.Name}", (_) => CreateNode(type));
+                    evt.menu.AppendAction($"[{type.BaseType?.Name}] {type.Name}", (_) => CreateNode(type, localMousePosition));
                 }
             }
             
@@ -126,24 +138,26 @@ namespace BTDesigner
                 var types = TypeCache.GetTypesDerivedFrom<UtilityNode>();
                 foreach (var type in types)
                 {
-                    evt.menu.AppendAction($"[{type.BaseType?.Name}] {type.Name}", (_) => CreateNode(type));
+                    evt.menu.AppendAction($"[{type.BaseType?.Name}] {type.Name}", (_) => CreateNode(type, localMousePosition));
                 }
             }
         }
 
-        private void CreateNode(Type type)
+        private void CreateNode(Type type, Vector2 position)
         {
             Node node = tree.CreateNode(type);
-            CreateNodeView(node);
+            Debug.Log(position);
+            CreateNodeView(node).SetPosition(new Rect(position, Vector2.zero));
         }
         
-        private void CreateNodeView(Node node)
+        private NodeView CreateNodeView(Node node)
         {
             var nodeView = new NodeView(node)
             {
                 OnNodeSelected = OnNodeSelected
             };
             AddElement(nodeView);
+            return nodeView;
         }
     }
 }
