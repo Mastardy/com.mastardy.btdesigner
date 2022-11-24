@@ -1,0 +1,20 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Packages/com.mastardy.btdesigner/Editor/Resources/Styles/NodeView.uss?fileID=7433441132597879392&amp;guid=1da802f06beda324694a88dc9277f660&amp;type=3#NodeView" />
+    <ui:VisualElement name="node-border" picking-mode="Ignore">
+        <ui:VisualElement name="contents">
+            <ui:VisualElement name="top">
+                <ui:VisualElement name="input" />
+                <ui:VisualElement name="title" style="padding-left: 2px; padding-right: 2px; padding-top: 2px; padding-bottom: 2px; margin-left: 2px; margin-right: 2px; margin-top: 2px; margin-bottom: 2px;">
+                    <ui:Label name="title-label" text="RepeaterNode" class="unity-text-element unity-label" />
+                    <ui:VisualElement name="title-button-container">
+                        <ui:VisualElement name="collapse-button">
+                            <ui:VisualElement name="icon" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="output" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="selection-border" picking-mode="Ignore" />
+</ui:UXML>

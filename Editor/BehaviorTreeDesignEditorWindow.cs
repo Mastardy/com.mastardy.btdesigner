@@ -1,5 +1,6 @@
 using BTDesigner;
 using UnityEditor;
+using UnityEditor.Callbacks;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -16,6 +17,27 @@ public class BehaviorTreeDesignEditorWindow : EditorWindow
     {
         BehaviorTreeDesignEditorWindow wnd = GetWindow<BehaviorTreeDesignEditorWindow>();
         wnd.titleContent = new GUIContent("Behavior Tree Designer");
+        wnd.minSize = new Vector2(800, 600);
+    }
+
+    public static void OpenWindow(BehaviorTreeDesign treeDesign)
+    {
+        BehaviorTreeDesignEditorWindow wnd = GetWindow<BehaviorTreeDesignEditorWindow>();
+        wnd.titleContent = new GUIContent("Behavior Tree Designer");
+        wnd.minSize = new Vector2(800, 600);
+
+        wnd.SelectTree(treeDesign);
+    }
+
+    [OnOpenAsset]
+    public static bool OnOpenAsset(int instanceID, int line)
+    {
+        if (Selection.activeObject is BehaviorTreeDesign treeDesign)
+        {
+            OpenWindow(treeDesign);
+            return true;
+        }
+        return false;
     }
 
     public void CreateGUI()
@@ -48,5 +70,11 @@ public class BehaviorTreeDesignEditorWindow : EditorWindow
     private void OnNodeSelectionChanged(NodeView nodeView)
     {
         inspectorView.UpdateSelection(nodeView);
+    }
+    
+    private void SelectTree(BehaviorTreeDesign treeDesign)
+    {
+        if (!treeDesign) return;
+        treeView.PopulateView(treeDesign);
     }
 }

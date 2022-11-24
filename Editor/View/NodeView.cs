@@ -1,6 +1,7 @@
 using System;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace BTDesigner
 {
@@ -18,7 +19,7 @@ namespace BTDesigner
             set => base.title = value;
         }
         
-        public NodeView(Node node)
+        public NodeView(Node node) : base("Packages/com.mastardy.btdesigner/Editor/Resources/UXML/NodeView.uxml")
         {
             this.node = node;
             title = node.name;
@@ -36,15 +37,15 @@ namespace BTDesigner
         {
             if (node is ActionNode)
             {
-                input = InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Single, typeof(bool));
+                input = InstantiatePort(Orientation.Vertical, Direction.Input, Port.Capacity.Single, typeof(bool));
             }
             else if (node is CompositionNode)
             {
-                input = InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Single, typeof(bool));
+                input = InstantiatePort(Orientation.Vertical, Direction.Input, Port.Capacity.Single, typeof(bool));
             }
             else if (node is UtilityNode)
             {
-                input = InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Single, typeof(bool));
+                input = InstantiatePort(Orientation.Vertical, Direction.Input, Port.Capacity.Single, typeof(bool));
             }
             else if (node is RootNode)
             {
@@ -65,18 +66,19 @@ namespace BTDesigner
             }
             else if (node is CompositionNode)
             {
-                output = InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Multi, typeof(bool));
+                output = InstantiatePort(Orientation.Vertical, Direction.Output, Port.Capacity.Multi, typeof(bool));
             }
             else if (node is UtilityNode)
             {
-                output = InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(bool));
+                output = InstantiatePort(Orientation.Vertical, Direction.Output, Port.Capacity.Single, typeof(bool));
             }
             else if (node is RootNode)
             {
-                output = InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(bool));
+                output = InstantiatePort(Orientation.Vertical, Direction.Output, Port.Capacity.Single, typeof(bool));
             }
 
             if (output == null) return;
+
             output.portName = "";
             outputContainer.Add(output);
         }

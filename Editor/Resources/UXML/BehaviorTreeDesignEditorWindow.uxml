@@ -1,5 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
-    <Style src="project://database/Assets/Editor/BehaviorTreeDesignEditorWindow.uss?fileID=7433441132597879392&amp;guid=9e77c5b9f8e4f5047b8d46944a3c5da7&amp;type=3#BehaviorTreeDesignEditorWindow" />
+    <Style src="project://database/Packages/com.mastardy.btdesigner/Editor/Resources/Styles/BehaviorTreeDesignEditorWindow.uss?fileID=7433441132597879392&amp;guid=9e77c5b9f8e4f5047b8d46944a3c5da7&amp;type=3#BehaviorTreeDesignEditorWindow" />
     <uie:Toolbar>
         <uie:ToolbarButton text="Save Asset" display-tooltip-when-elided="true" style="-unity-text-align: middle-left;" />
         <uie:ToolbarSpacer />

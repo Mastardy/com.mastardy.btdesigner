@@ -2,6 +2,17 @@
 
 All changes to this package will be documented in here. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
+## [1.1.0] - 24/11/2022
+
+### Added
+
+- Now you can open the window from an asset in Unity Project's window
+
+### Changed
+
+- Changed the GUI for the nodes in the BTDesigner window
+
+
 ## [1.0.0] - 18/11/2022
 
 ### Added
